@@ -214,8 +214,37 @@ module.exports = {
       // Make sure to add the new loader(s) before the "file" loader.
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
-      }
+        // loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: require.resolve('sass-loader'),
+            options: {
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+              ],
+            },
+          },
+        ],
+      },
+      // {
+      //   test: /\.(woff|svg|eot|ttf)\??.*$/,
+      //   loaders: ['url-loader?name=fonts/[name].[md5:hash:hex:7].[ext]'],
+      // }
     ],
   },
   plugins: [

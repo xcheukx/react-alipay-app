@@ -1,6 +1,27 @@
 /*
 * @Author: Cheuk
 * @Date:   2017-09-03 13:43:12
-* @Last Modified by:   Cheuk
-* @Last Modified time: 2017-09-03 13:43:12
+* @Last Modified by:   卓圳宝
+* @Last Modified time: 2017-09-04 16:08:57
 */
+
+@import './../../common/sass/global.scss';
+
+.cm-tab-bar{
+	&-container{
+		display: flex;
+	}
+	&-tab{
+		flex:1;
+		display: flex;
+		flex-direction:column;
+		text-align: center;
+		color:#929292;
+		&.selected{
+			color:$theme-color;
+		}
+		&-icon{
+			
+		}
+	}
+}

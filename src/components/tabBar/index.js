@@ -1,15 +1,17 @@
 /*
  * @Author: Cheuk
  * @Date:   2017-09-03 13:42:59
- * @Last Modified by:   Cheuk
- * @Last Modified time: 2017-09-03 15:53:44
+ * @Last Modified by:   卓圳宝
+ * @Last Modified time: 2017-09-04 11:37:43
  */
 import React, {
 	Component
-} from 'react';
+}
+from 'react';
+import Tab from './tab';
 import './style.scss';
 
-export class Item extends React.Component {
+export class Item extends Component {
 	render() {
 		return null;
 	}
@@ -18,6 +20,7 @@ export class Item extends React.Component {
 class TabBar extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {}
 	}
 	static defaultProps = {
 		prefixCls: 'cm-tab-bar',
@@ -31,50 +34,30 @@ class TabBar extends Component {
 		React.Children.forEach(this.props.children, (item) => {
 			const hasKey = !!item.key;
 			const isUnique = _allKeys.indexOf(item.key) === -1;
-			// warning(hasKey && isUnique, 'TabBar.Item must have a unique key!');
+			console.warn(hasKey && isUnique, 'TabBar.Item must have a unique key!');
 			_allKeys.push(item.key);
 			if (item.props.selected) {
 				activeKey = item.key;
 			}
 			children.push(item);
 		});
-		const panels = children.map((item) => {
-			// const cProps = item.props;
-			// const tab = (<Tab
-			// 	prefixCls={`${this.props.prefixCls}-tab`}
-			// 	badge={cProps.badge}
-			// 	dot={cProps.dot}
-			// 	selected={cProps.selected}
-			// 	icon={cProps.icon}
-			// 	selectedIcon={cProps.selectedIcon}
-			// 	title={cProps.title}
-			// 	tintColor={tintColor}
-			// 	unselectedTintColor={unselectedTintColor}
-			// 	dataAttrs={getDataAttr(cProps)}
-			// />);
+		const items = children.map((item) => {
+			const iProps = item.props;
 			return (
-				<div className={`${this.props.prefixCls}-tab`}>
-				{
-					/*<TabPane
-										placeholder={this.props.placeholder}
-										tab={tab}
-										key={c.key}
-								    >
-							        	{c}
-							        </TabPane>*/
-				}
-					<div className={`${this.props.prefixCls}-tab-icon`}>
-						<span className={`${this.props.prefixCls}-tab-icon-img`}></span>
-						<sup className="cm-badge-text"></sup>
-						<sup className="cm-badge-dot"></sup>
-					</div>
-					<label className="cm-tab-bar-tab-title">111</label>
-				</div>
+				<Tab
+					prefixCls={`${this.props.prefixCls}-tab`}
+					badge={iProps.badge}
+					dot={iProps.dot}
+					selected={iProps.selected}
+					iconFont={iProps.iconFont}
+					icon={iProps.icon}
+					selectedIcon={iProps.selectedIcon}
+					title={iProps.title} />
 			);
 		});
 		return (
 			<div className="cm-tab-bar-container">
-				{panels}
+				{items}
 			</div>
 		)
 	}

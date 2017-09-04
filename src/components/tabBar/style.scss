@@ -2,14 +2,20 @@
 * @Author: Cheuk
 * @Date:   2017-09-03 13:43:12
 * @Last Modified by:   卓圳宝
-* @Last Modified time: 2017-09-04 16:08:57
+* @Last Modified time: 2017-09-04 17:20:37
 */
 
 @import './../../common/sass/global.scss';
 
 .cm-tab-bar{
 	&-container{
+	    border-top: 1px solid #ddd;
+		bottom:0;
+		position: fixed;
+		width: 100%;
+		box-sizing:border-box;
 		display: flex;
+		z-index: 100;
 	}
 	&-tab{
 		flex:1;

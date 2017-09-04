@@ -2,7 +2,7 @@
  * @Author: Cheuk
  * @Date:   2017-09-02 22:46:22
  * @Last Modified by:   卓圳宝
- * @Last Modified time: 2017-09-04 15:25:27
+ * @Last Modified time: 2017-09-04 17:48:47
  */
 import React, {
 	Component
@@ -18,12 +18,15 @@ class Main extends Component {
 	render() {
 		return (
 			<div className="main">
-				{/*.navbar*/}
+				<div class="common-tools">
+					(.common-tools-hd>.search-box+.contacts+.more)+.common-tools-bd>
+				</div>
+				div.apps-box>(.apps-icon>Icon)+label.apps-text
 				<TabBar>
-					<TabBar.Item title="朋友" key="朋友" icon="dangmianfu">
-					</TabBar.Item>
-					<TabBar.Item title="朋友1" key="朋友1" icon="dangmianfu" selected={true}>
-					</TabBar.Item>
+					<TabBar.Item title="生活" key="生活" icon="zhifubaoa" />
+					<TabBar.Item title="口碑" key="口碑" icon="tansuoa" selected={true} />
+					<TabBar.Item title="朋友" key="朋友" icon="fuwuchuanga" />
+					<TabBar.Item title="我的" key="我的" icon="caifua" />
 				</TabBar>
 			</div>
 		)

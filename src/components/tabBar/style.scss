@@ -2,7 +2,7 @@
 * @Author: Cheuk
 * @Date:   2017-09-03 13:43:12
 * @Last Modified by:   卓圳宝
-* @Last Modified time: 2017-09-04 17:20:37
+* @Last Modified time: 2017-09-04 17:32:05
 */
 
 @import './../../common/sass/global.scss';
@@ -16,18 +16,23 @@
 		box-sizing:border-box;
 		display: flex;
 		z-index: 100;
+		height:pxToRem(50px);
 	}
 	&-tab{
 		flex:1;
 		display: flex;
 		flex-direction:column;
-		text-align: center;
+		justify-content: center;
+	    align-items: center;
 		color:#929292;
 		&.selected{
 			color:$theme-color;
 		}
 		&-icon{
-			
+			font-size: pxToRem(21px);
+		}
+		&-title{
+			font-size: pxToRem(9px);
 		}
 	}
 }

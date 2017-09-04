@@ -1,0 +1,95 @@
+/*
+* @Author: Cheuk
+* @Date:   2017-09-04 15:30:08
+* @Last Modified by:   卓圳宝
+* @Last Modified time: 2017-09-04 16:05:24
+*/
+
+// px转rem
+@function pxToRem($px) {
+  @return $px / $base-size * 1rem;
+}
+
+@function power ($x, $n) {
+    $ret: 1;
+    
+    @if $n >= 0 {
+        @for $i from 1 through $n {
+            $ret: $ret * $x;
+        } 
+    } @else {
+        @for $i from $n to 0 {
+            $ret: $ret / $x;
+        }
+    }
+    
+    @return $ret;
+}
+
+// 阶乘
+@function factorial ($x) {
+    $ret: 1;
+    
+    @if $x > 0 {
+        @while $x > 0 {
+            $ret: $ret * $x;
+            
+            $x: $x - 1;
+        }
+    }
+    
+    @return $ret;
+}
+
+// 正弦
+@function sin ($x) {
+    $ret: 0;
+    
+    @for $n from 0 to 25 {
+        $ret: $ret + power(-1, $n) * power($x, 2 * $n + 1) / factorial(2 * $n + 1);
+    }
+
+    @return $ret;
+}
+
+// 余弦
+@function cos ($x) {
+    $ret: 0;
+    
+    @for $n from 0 to 25 {
+        $ret: $ret + power(-1, $n) * power($x, 2 * $n) / factorial(2 * $n);
+    }
+
+    @return $ret;
+}
+
+// 指数
+@function exp ($x) {
+    $ret: 0;
+    
+    @for $n from 0 to 25 {
+        $ret: $ret + power($x, $n) / factorial($n);
+    }
+    
+    @return $ret;
+}
+
+// 对数
+@function ln($x) {
+    $ret: 0;
+    $n: 1;
+    $dx: .001;
+    
+    @while $n <= $x {
+        $ret: $ret + $dx / $n;
+        
+        $n: $n + $dx;
+    }
+    
+    @return $ret;
+}
+
+//开平方根
+@function sqrt($x) {    
+    @return exp(0.5 * ln($x));
+}

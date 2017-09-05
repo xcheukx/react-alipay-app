@@ -2,7 +2,7 @@
  * @Author: Cheuk
  * @Date:   2017-09-03 13:43:21
  * @Last Modified by:   卓圳宝
- * @Last Modified time: 2017-09-04 15:24:51
+ * @Last Modified time: 2017-09-05 11:27:46
  */
 import React, {	Component } from 'react';
 import classNames from 'classnames';
@@ -14,13 +14,13 @@ class Tab extends Component {
 		this.state = {}
 	}
 	render() {
-	    const { title, prefixCls, dot, badge, icon, selected } = this.props;
+	    const { title, prefixCls, dot, badge, icon, selected, onClick=null } = this.props;
 		const classString = classNames({
 			[`${prefixCls}`]:true,
 			"selected":selected,
 		});
 		return (
-			<div className={classString}>
+			<div className={classString} onClick={onClick}>
 				{icon?<div className={`${prefixCls}-icon`}>
 					<Icon type={icon} />
 					{badge?<sup className="cm-badge-text">{badge}</sup>:null}

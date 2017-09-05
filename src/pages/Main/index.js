@@ -2,7 +2,7 @@
  * @Author: Cheuk
  * @Date:   2017-09-02 22:46:22
  * @Last Modified by:   卓圳宝
- * @Last Modified time: 2017-09-04 17:48:47
+ * @Last Modified time: 2017-09-05 14:10:20
  */
 import React, {
 	Component
@@ -18,15 +18,25 @@ class Main extends Component {
 	render() {
 		return (
 			<div className="main">
-				<div class="common-tools">
-					(.common-tools-hd>.search-box+.contacts+.more)+.common-tools-bd>
+				{/*(.common-tools>(.common-tools-hd>.search-box+.contacts+.more)+.common-tools-bd>.apps-box>.apps-item*4>(.apps-icon>Icon)+label.apps-text)+.apps-box>.apps-item*12>(.apps-icon>Icon)+label.apps-text*/}
+				<div className="common-tools">
+					<div className="common-tools-hd">
+						<div className="search-box"><input type="text" /></div>
+						<div className="contacts"></div>
+						<div className="more"></div>
+					</div>
+					<div className="common-tools-bd">
+						<div className="apps-box">
+						</div>
+					</div>
 				</div>
-				div.apps-box>(.apps-icon>Icon)+label.apps-text
+				<div className="apps-box">
+				</div>
 				<TabBar>
-					<TabBar.Item title="生活" key="生活" icon="zhifubaoa" />
-					<TabBar.Item title="口碑" key="口碑" icon="tansuoa" selected={true} />
-					<TabBar.Item title="朋友" key="朋友" icon="fuwuchuanga" />
-					<TabBar.Item title="我的" key="我的" icon="caifua" />
+					<TabBar.Item title="生活" key="life" icon="zhifubaoa" onClick={()=>console.log('生活')} />
+					<TabBar.Item title="口碑" key="shop" icon="tansuoa" selected={true} />
+					<TabBar.Item title="朋友" key="friend" icon="fuwuchuanga" />
+					<TabBar.Item title="我的" key="my" icon="caifua" />
 				</TabBar>
 			</div>
 		)

@@ -2,7 +2,7 @@
  * @Author: Cheuk
  * @Date:   2017-09-03 13:42:59
  * @Last Modified by:   卓圳宝
- * @Last Modified time: 2017-09-04 11:37:43
+ * @Last Modified time: 2017-09-05 11:34:22
  */
 import React, {
 	Component
@@ -31,10 +31,11 @@ class TabBar extends Component {
 		let activeKey;
 		const children = [];
 		const _allKeys = [];
+		console.log(this.props.children);
 		React.Children.forEach(this.props.children, (item) => {
 			const hasKey = !!item.key;
 			const isUnique = _allKeys.indexOf(item.key) === -1;
-			console.warn(hasKey && isUnique, 'TabBar.Item must have a unique key!');
+			// console.warn(hasKey && isUnique, 'TabBar.Item must have a unique key!');
 			_allKeys.push(item.key);
 			if (item.props.selected) {
 				activeKey = item.key;
@@ -46,13 +47,7 @@ class TabBar extends Component {
 			return (
 				<Tab
 					prefixCls={`${this.props.prefixCls}-tab`}
-					badge={iProps.badge}
-					dot={iProps.dot}
-					selected={iProps.selected}
-					iconFont={iProps.iconFont}
-					icon={iProps.icon}
-					selectedIcon={iProps.selectedIcon}
-					title={iProps.title} />
+					{...iProps} />
 			);
 		});
 		return (
